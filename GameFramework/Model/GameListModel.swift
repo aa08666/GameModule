@@ -11,7 +11,8 @@ GameList Model: ( name、highscore、number of times、Icon ）
 */
 import Foundation
 
-struct GmaeListDataModel {
+class GameListDataModel {
+    
     var gameName: String!
     var highestScore: String!
     var numberOfTimes: String!
@@ -24,5 +25,7 @@ struct GmaeListDataModel {
         self.gameImage = gameImage
     }
     
-
+    static let gameListModel: [GameListDataModel] = [GameListDataModel(gameName: "六彩按按樂", highestScore: "3", numberOfTimes: "3", gameImage: "icons8-game-controller-100"), GameListDataModel(gameName: "八方", highestScore: "3", numberOfTimes: "3", gameImage: "icons8-epic-games-100")]
 }
+
+

@@ -16,6 +16,8 @@
 		AB0FCEEB22EC19DC002EBF7E /* GameListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FCEEA22EC19DC002EBF7E /* GameListModel.swift */; };
 		AB0FCEED22EC2D5F002EBF7E /* TouchColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0FCEEC22EC2D5F002EBF7E /* TouchColorViewController.swift */; };
 		AB1C1EDF22EDE4E000B8881E /* GameSystems.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1C1EDE22EDE4E000B8881E /* GameSystems.swift */; };
+		AB1C1F0B22EEA06700B8881E /* GameListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1C1F0922EEA06700B8881E /* GameListTableViewCell.swift */; };
+		AB1C1F0C22EEA06700B8881E /* GameListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB1C1F0A22EEA06700B8881E /* GameListTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		AB0FCEEA22EC19DC002EBF7E /* GameListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListModel.swift; sourceTree = "<group>"; };
 		AB0FCEEC22EC2D5F002EBF7E /* TouchColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchColorViewController.swift; sourceTree = "<group>"; };
 		AB1C1EDE22EDE4E000B8881E /* GameSystems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSystems.swift; sourceTree = "<group>"; };
+		AB1C1F0922EEA06700B8881E /* GameListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListTableViewCell.swift; sourceTree = "<group>"; };
+		AB1C1F0A22EEA06700B8881E /* GameListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameListTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,12 +72,38 @@
 				AB0FCEDF22EC0E8E002EBF7E /* LaunchScreen.storyboard */,
 				AB0FCEE222EC0E8E002EBF7E /* Info.plist */,
 				AB0FCEDA22EC0E8D002EBF7E /* GameFramework.xcdatamodeld */,
-				AB0FCEE822EC1969002EBF7E /* GameListTableViewController.swift */,
-				AB0FCEEA22EC19DC002EBF7E /* GameListModel.swift */,
-				AB0FCEEC22EC2D5F002EBF7E /* TouchColorViewController.swift */,
 				AB1C1EDE22EDE4E000B8881E /* GameSystems.swift */,
+				AB1C1F0F22EEA08400B8881E /* Controller */,
+				AB1C1F0E22EEA07C00B8881E /* View */,
+				AB1C1F0D22EEA07100B8881E /* Model */,
 			);
 			path = GameFramework;
+			sourceTree = "<group>";
+		};
+		AB1C1F0D22EEA07100B8881E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB0FCEEA22EC19DC002EBF7E /* GameListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AB1C1F0E22EEA07C00B8881E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB1C1F0922EEA06700B8881E /* GameListTableViewCell.swift */,
+				AB1C1F0A22EEA06700B8881E /* GameListTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB1C1F0F22EEA08400B8881E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AB0FCEE822EC1969002EBF7E /* GameListTableViewController.swift */,
+				AB0FCEEC22EC2D5F002EBF7E /* TouchColorViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +167,7 @@
 				AB0FCEE122EC0E8E002EBF7E /* LaunchScreen.storyboard in Resources */,
 				AB0FCEDE22EC0E8E002EBF7E /* Assets.xcassets in Resources */,
 				AB0FCED922EC0E8D002EBF7E /* Main.storyboard in Resources */,
+				AB1C1F0C22EEA06700B8881E /* GameListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +182,7 @@
 				AB0FCEDC22EC0E8D002EBF7E /* GameFramework.xcdatamodeld in Sources */,
 				AB0FCEEB22EC19DC002EBF7E /* GameListModel.swift in Sources */,
 				AB0FCED422EC0E8D002EBF7E /* AppDelegate.swift in Sources */,
+				AB1C1F0B22EEA06700B8881E /* GameListTableViewCell.swift in Sources */,
 				AB0FCEE922EC1969002EBF7E /* GameListTableViewController.swift in Sources */,
 				AB0FCEED22EC2D5F002EBF7E /* TouchColorViewController.swift in Sources */,
 			);

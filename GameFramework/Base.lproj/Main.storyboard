@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yee-oW-OCg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HRS-Jp-17P">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="P0n-oI-nQx">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="177" id="owB-ah-EzJ" customClass="GameListTableViewCell" customModule="GameFramework" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="177"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P0n-oI-nQx" id="usO-t7-l8N">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="owB-ah-EzJ" id="zWY-eS-63Z">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="176.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -33,10 +33,14 @@
                             <outlet property="delegate" destination="HRS-Jp-17P" id="708-Jj-zRX"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="myTableView" destination="o5k-nR-YO6" id="z3o-dd-4rN"/>
+                        <segue destination="yee-oW-OCg" kind="show" identifier="touchGame" id="TYf-CC-B8h"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcn-Er-frf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="650" y="2"/>
+            <point key="canvasLocation" x="648.79999999999995" y="1.3493253373313345"/>
         </scene>
         <!--Touch Color View Controller-->
         <scene sceneID="TWH-GZ-Zu5">
@@ -129,8 +133,8 @@
                                 <color key="textColor" red="0.97683863660000003" green="0.98771526580000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xib-gW-Czz">
-                                <rect key="frame" x="136" y="19" width="21" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xib-gW-Czz">
+                                <rect key="frame" x="136" y="19" width="18" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.97683863660000003" green="0.98771526580000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -168,13 +172,13 @@
                         <outlet property="blueView" destination="jBv-lM-d2D" id="h2r-Si-caG"/>
                         <outlet property="colorLabel" destination="DIQ-Z6-DjD" id="sUm-9g-hXM"/>
                         <outlet property="currentScoreLabel" destination="H1a-Wc-Eym" id="BAY-JS-Pco"/>
-                        <outlet property="gameTimes" destination="743-dd-A45" id="0Zd-am-nkY"/>
+                        <outlet property="gameTimesLabel" destination="743-dd-A45" id="0Zd-am-nkY"/>
                         <outlet property="grayView" destination="F3h-U0-alB" id="AbB-Jn-HTn"/>
                         <outlet property="greenView" destination="fo6-FQ-alY" id="CTZ-Yf-6o8"/>
                         <outlet property="highestScoreLabel" destination="exN-2s-FDA" id="gqP-hO-66x"/>
                         <outlet property="orangeView" destination="n22-13-45T" id="GUW-yN-Ep1"/>
                         <outlet property="redView" destination="Fov-ml-9lx" id="f6Y-nZ-IhX"/>
-                        <outlet property="remainingTime" destination="Xib-gW-Czz" id="Yr7-5T-Ufd"/>
+                        <outlet property="remainingTimeLabel" destination="Xib-gW-Czz" id="Yr7-5T-Ufd"/>
                         <outlet property="yellowView" destination="RXO-wZ-Xbk" id="Tq3-T5-9rG"/>
                     </connections>
                 </viewController>
