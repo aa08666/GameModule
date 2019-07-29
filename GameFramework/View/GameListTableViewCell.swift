@@ -8,7 +8,12 @@
 
 import UIKit
 
-class GameListTableViewCell: UITableViewCell {
+class GameListTableViewCell: UITableViewCell, Delegate {
+    
+    func passData(data: String, data2: String, data3: String) {
+        gameNumberOfTimesLabel.text = data
+    }
+    
     
     @IBOutlet weak var gameNameLabel: UILabel!
     @IBOutlet weak var gameHighestLabel: UILabel!

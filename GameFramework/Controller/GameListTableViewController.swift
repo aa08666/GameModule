@@ -18,7 +18,11 @@
 
 import UIKit
 
-class GameListTableViewController: UITableViewController {
+class GameListTableViewController: UITableViewController, Delegate {
+    
+    func passData(data: String, data2: String, data3: String) {
+
+    }
 
     @IBOutlet var myTableView: UITableView!
     var gameListDataModel: GameListDataModel?
@@ -29,6 +33,7 @@ class GameListTableViewController: UITableViewController {
         self.tableView.register(nib, forCellReuseIdentifier: "GameListCell")
         
         gameListDataModel = GameListDataModel.gameListModel.first
+        
     }
 
     // MARK: - Table view data source
@@ -47,10 +52,6 @@ class GameListTableViewController: UITableViewController {
         let GameListCellID = "GameListCell"
         
         let cell = tableView.dequeueReusableCell(withIdentifier: GameListCellID, for: indexPath) as! GameListTableViewCell
-        cell.gameNameLabel.text = GameListDataModel.gameListModel[indexPath.row].gameName
-        cell.gameHighestLabel.text = GameListDataModel.gameListModel[indexPath.row].highestScore
-        cell.gameNumberOfTimesLabel.text = GameListDataModel.gameListModel[indexPath.row].numberOfTimes
-        cell.gameImageView.image = UIImage(named: GameListDataModel.gameListModel[indexPath.row].gameImage)
         
         cell.settingCell(gameListDataModel)
         

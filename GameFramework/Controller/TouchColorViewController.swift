@@ -8,18 +8,25 @@
 
 import UIKit
 
-// TODO: 把值傳回主頁面，(次數、最高分)
+
 // FIX: gameTimes 可能要使用 escaping 才能
+
+
 class TouchColorViewController: UIViewController, GameSystems {
     
     var timer: Timer?
     var secondTimer: Timer?
     let defaul = UserDefaults.standard
+    var delegate: Delegate?
+    var passHighestScore: Int!
     
     var currentScore = 0
     var highestScore = 0
     var currentTime = 10
     var gameTimes = 0
+    
+    let tvc = TouchColorViewController()
+    let gvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameListTVC") as! GameListTableViewController
     
     
     @IBOutlet weak var colorLabel: UILabel!
@@ -56,9 +63,20 @@ class TouchColorViewController: UIViewController, GameSystems {
         
     }
     
+    @IBAction func backToGameListButton(_ sender: UIButton) {
+        
+        self.present(self,animated: true, completion: nil)
+        tvc.delegate = gvc
+        tvc.delegate?.passData(data: String(passHighestScore), data2: "", data3: "")
+        
+        // TODO: 把值傳回主頁面，(次數、最高分)
+        // TODO: 一開始 homePage 沒有分數，等玩過一次後再把分數回傳
+    }
+    
     func newhighestScore() {
         if currentScore > highestScore {
             highestScore = defaul.integer(forKey: "currentScore")
+            passHighestScore = highestScore
             alertFunction(title: "恭喜", message: "新紀錄", actionTitle: "OK")
         }else{
             alertFunction(title: "歐歐", message: "再接再厲", actionTitle: "OK")
@@ -77,7 +95,6 @@ class TouchColorViewController: UIViewController, GameSystems {
         remainingTimeLabel.text! = "\(currentTime)"
         if currentTime == 0 {
             newhighestScore()
-            // 把最高分傳過去
             highestScoreLabel.text! = "\(currentScore)"
             currentScore = 0
             currentScoreLabel.text! = "\(currentScore)"
