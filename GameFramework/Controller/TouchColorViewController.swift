@@ -18,12 +18,13 @@ protocol TouchColorViewControllerDelegate: AnyObject {
 class TouchColorViewController: UIViewController, GameSystems {
     
     weak var delegate: TouchColorViewControllerDelegate?
+    
     var index: Int?
     
     var timer: Timer?
     var secondTimer: Timer?
     let defaul = UserDefaults.standard
-//    var delegate: Delegate?
+
     var passHighestScore: Int!
     
     var currentScore = 0
@@ -32,8 +33,6 @@ class TouchColorViewController: UIViewController, GameSystems {
     var gameTimes = 0
     
     let gameListTableVC = GameListTableViewController()
-    
-    //   let gvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameListTVC") as! GameListTableViewController
     
     @IBOutlet weak var colorLabel: UILabel!
     
@@ -57,6 +56,7 @@ class TouchColorViewController: UIViewController, GameSystems {
         highestScoreLabel.text! = "\(currentScore)"
         gameTimesLabel.text! = "\(String(describing: gameTimes))"
         defaul.set(currentScore, forKey: "currentScore")
+        defaul.set(passHighestScore, forKey: "passHighestScore")
         defaul.set(gameTimes, forKey: "gameTimes")
     }
     
@@ -67,7 +67,7 @@ class TouchColorViewController: UIViewController, GameSystems {
     
     @IBAction func backToGameListButton(_ sender: UIButton) {
         if let index = index {
-            delegate?.passData(index: index, highScroe: 100, gameTimes: gameTimes)
+            delegate?.passData(index: index, highScroe: passHighestScore, gameTimes: gameTimes)
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -75,9 +75,9 @@ class TouchColorViewController: UIViewController, GameSystems {
     func newhighestScore() {
         if currentScore > highestScore {
             highestScore = currentScore
-//            gameListTableVC.highestScore = defaul.integer(forKey: "currentScore")
-//            highestScore = defaul.integer(forKey: "currentScore")
-//            passHighestScore = highestScore
+            passHighestScore = highestScore
+            highestScore = defaul.integer(forKey: "currentScore")
+            
             alertFunction(title: "恭喜", message: "新紀錄", actionTitle: "OK")
         }else{
             alertFunction(title: "歐歐", message: "再接再厲", actionTitle: "OK")

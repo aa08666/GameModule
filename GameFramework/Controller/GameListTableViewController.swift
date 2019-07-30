@@ -17,7 +17,7 @@
 import UIKit
 
 class GameListTableViewController: UITableViewController{
-    
+
     // 使用 Reference 紀錄來自遊戲的最高分與次遊玩次數
     var highestScore: Int = 0
     var numberOftimes: Int = 0
@@ -26,12 +26,15 @@ class GameListTableViewController: UITableViewController{
     // 給 Model 資料
     var gameListDataModels = GameListDataModel.gameListModel
     
+    var userDefault = UserDefaults.standard
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // 註冊 nib 檔案
         let nib = UINib(nibName: "GameListTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "GameListCell")
+        
     }
     
     // MARK: - Table view data source
@@ -74,8 +77,15 @@ class GameListTableViewController: UITableViewController{
 extension GameListTableViewController: TouchColorViewControllerDelegate {
     
     func passData(index: Int, highScroe: Int, gameTimes: Int) {
+        
         gameListDataModels[index].highestScore = "\(highScroe)"
         gameListDataModels[index].numberOfTimes = "\(gameTimes)"
+        
+        userDefault.set(gameListDataModels[index].numberOfTimes, forKey: "numberOfTimes")
+        userDefault.set(gameListDataModels[index].highestScore, forKey: "highestScore")
+        
+        gameListDataModels[index].highestScore = userDefault.string(forKey: "highestScore")
+        gameListDataModels[index].numberOfTimes = userDefault.string(forKey: "numberOfTimes")
         tableView.reloadData()
     }
     
