@@ -26,11 +26,14 @@ class TouchColorViewController: UIViewController, GameSystems {
     let defaul = UserDefaults.standard
 
     var passHighestScore: Int!
+    var passGameTimes: Int!
     
+    var gameTimes = 0
+    var currentTime = 10
     var currentScore = 0
     var highestScore = 0
-    var currentTime = 10
-    var gameTimes = 0
+   
+    
     
     let gameListTableVC = GameListTableViewController()
     
@@ -55,28 +58,27 @@ class TouchColorViewController: UIViewController, GameSystems {
         super.viewDidLoad()
         highestScoreLabel.text! = "\(currentScore)"
         gameTimesLabel.text! = "\(String(describing: gameTimes))"
-        defaul.set(currentScore, forKey: "currentScore")
-        defaul.set(passHighestScore, forKey: "passHighestScore")
+        defaul.set(highestScore, forKey: "highestScore")
         defaul.set(gameTimes, forKey: "gameTimes")
     }
     
-    func timesNumber() {
-        gameTimes = defaul.integer(forKey: "gameTimes")
-        gameTimes = numberOfTimes(gameTimes)
+    func numberOfTimes() {
+        gameTimes += 1
+        passGameTimes = gameTimes
     }
     
     @IBAction func backToGameListButton(_ sender: UIButton) {
         if let index = index {
-            delegate?.passData(index: index, highScroe: passHighestScore, gameTimes: gameTimes)
+            delegate?.passData(index: index, highScroe: passHighestScore, gameTimes: passGameTimes)
         }
         self.dismiss(animated: true, completion: nil)
     }
     
     func newhighestScore() {
         if currentScore > highestScore {
+            
             highestScore = currentScore
             passHighestScore = highestScore
-            highestScore = defaul.integer(forKey: "currentScore")
             
             alertFunction(title: "恭喜", message: "新紀錄", actionTitle: "OK")
         }else{
@@ -94,14 +96,15 @@ class TouchColorViewController: UIViewController, GameSystems {
     @objc func countDown() {
         currentTime -= 1
         remainingTimeLabel.text! = "\(currentTime)"
+        
         if currentTime == 0 {
             newhighestScore()
             highestScoreLabel.text! = "\(currentScore)"
             currentScore = 0
             currentScoreLabel.text! = "\(currentScore)"
-            gameReset()
-            timesNumber()
+            numberOfTimes()
             gameTimesLabel.text! = "\(gameTimes)"
+            gameReset()
         }
         
         if currentTime == 5 && currentScore < 5 {
@@ -110,6 +113,7 @@ class TouchColorViewController: UIViewController, GameSystems {
     }
     
     func gameFail() {
+            currentScore = 0
             gameReset()
             alertFunction(title: "Hello~", message: "睡著了嗎", actionTitle: "是的，我睡著了")
     }
@@ -162,7 +166,6 @@ class TouchColorViewController: UIViewController, GameSystems {
             colorLabel.text! = "顏色"
             currentScoreLabel.text! = "\(0)"
         }
-        
     }
     
     @IBAction func againButton(_ sender: UIButton) {

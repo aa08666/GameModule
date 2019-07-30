@@ -22,7 +22,7 @@ protocol GameSystems: UIViewController {
     // 遊戲重置
     func gameReset()
     // 遊玩次數
-    func numberOfTimes(_ number: Int)-> Int
+    func numberOfTimes()
 }
 
 extension GameSystems {
@@ -33,16 +33,9 @@ extension GameSystems {
     let okAction = UIAlertAction(title: actionTitle, style: .default, handler: nil)
     controller.addAction(okAction)
     present(controller, animated: true, completion: nil)
-    }
-    
-    func numberOfTimes(_ number: Int)-> Int {
         
-        var gameTimesNumber: Int!
-        gameTimesNumber = number
-        gameTimesNumber += 1
-        return gameTimesNumber
     }
-    
+   
 }
 
 protocol Delegate: AnyObject {

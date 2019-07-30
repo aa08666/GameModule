@@ -35,6 +35,7 @@ class GameListTableViewController: UITableViewController{
         let nib = UINib(nibName: "GameListTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "GameListCell")
         
+        
     }
     
     // MARK: - Table view data source
@@ -80,12 +81,11 @@ extension GameListTableViewController: TouchColorViewControllerDelegate {
         
         gameListDataModels[index].highestScore = "\(highScroe)"
         gameListDataModels[index].numberOfTimes = "\(gameTimes)"
+        userDefault.set(highScroe, forKey: "highScroe")
+        userDefault.set(gameTimes, forKey: "gameTimes")
         
-        userDefault.set(gameListDataModels[index].numberOfTimes, forKey: "numberOfTimes")
-        userDefault.set(gameListDataModels[index].highestScore, forKey: "highestScore")
-        
-        gameListDataModels[index].highestScore = userDefault.string(forKey: "highestScore")
-        gameListDataModels[index].numberOfTimes = userDefault.string(forKey: "numberOfTimes")
+        gameListDataModels[index].highestScore = userDefault.string(forKey: "highScroe")
+        gameListDataModels[index].numberOfTimes = userDefault.string(forKey: "gameTimes")
         tableView.reloadData()
     }
     
