@@ -11,13 +11,19 @@ import UIKit
 
 // FIX: gameTimes 可能要使用 escaping 才能
 
+protocol TouchColorViewControllerDelegate: AnyObject {
+    func passData(index: Int, highScroe: Int, gameTimes: Int)
+}
 
 class TouchColorViewController: UIViewController, GameSystems {
+    
+    weak var delegate: TouchColorViewControllerDelegate?
+    var index: Int?
     
     var timer: Timer?
     var secondTimer: Timer?
     let defaul = UserDefaults.standard
-    var delegate: Delegate?
+//    var delegate: Delegate?
     var passHighestScore: Int!
     
     var currentScore = 0
@@ -25,9 +31,9 @@ class TouchColorViewController: UIViewController, GameSystems {
     var currentTime = 10
     var gameTimes = 0
     
-    let tvc = TouchColorViewController()
-    let gvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameListTVC") as! GameListTableViewController
+    let gameListTableVC = GameListTableViewController()
     
+    //   let gvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameListTVC") as! GameListTableViewController
     
     @IBOutlet weak var colorLabel: UILabel!
     
@@ -46,37 +52,32 @@ class TouchColorViewController: UIViewController, GameSystems {
     
     var colorLabelText = ["紅","橘","黃","灰","藍","綠"]
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         highestScoreLabel.text! = "\(currentScore)"
         gameTimesLabel.text! = "\(String(describing: gameTimes))"
         defaul.set(currentScore, forKey: "currentScore")
         defaul.set(gameTimes, forKey: "gameTimes")
-        
     }
     
     func timesNumber() {
-        
         gameTimes = defaul.integer(forKey: "gameTimes")
         gameTimes = numberOfTimes(gameTimes)
-        
     }
     
     @IBAction func backToGameListButton(_ sender: UIButton) {
-        
-        self.present(self,animated: true, completion: nil)
-        tvc.delegate = gvc
-        tvc.delegate?.passData(data: String(passHighestScore), data2: "", data3: "")
-        
-        // TODO: 把值傳回主頁面，(次數、最高分)
-        // TODO: 一開始 homePage 沒有分數，等玩過一次後再把分數回傳
+        if let index = index {
+            delegate?.passData(index: index, highScroe: 100, gameTimes: gameTimes)
+        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     func newhighestScore() {
         if currentScore > highestScore {
-            highestScore = defaul.integer(forKey: "currentScore")
-            passHighestScore = highestScore
+            highestScore = currentScore
+//            gameListTableVC.highestScore = defaul.integer(forKey: "currentScore")
+//            highestScore = defaul.integer(forKey: "currentScore")
+//            passHighestScore = highestScore
             alertFunction(title: "恭喜", message: "新紀錄", actionTitle: "OK")
         }else{
             alertFunction(title: "歐歐", message: "再接再厲", actionTitle: "OK")
@@ -102,24 +103,28 @@ class TouchColorViewController: UIViewController, GameSystems {
             timesNumber()
             gameTimesLabel.text! = "\(gameTimes)"
         }
+        
+        if currentTime == 5 && currentScore < 5 {
+            gameFail()
+        }
     }
     
     func gameFail() {
-        print("TODO")
+            gameReset()
+            alertFunction(title: "Hello~", message: "睡著了嗎", actionTitle: "是的，我睡著了")
     }
-    
     
     func timeCountdown() {
         self.secondTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
     }
     
     @IBAction func gameStartButton(_ sender: UIButton) {
-            timeCountdown()
-         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(currentText), userInfo: nil, repeats: true)
+        timeCountdown()
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(currentText), userInfo: nil, repeats: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
+        
         let touch: UITouch = touches.first as! UITouch
         
         if touch.view == redView && colorLabel.text! == "紅" {
@@ -157,15 +162,11 @@ class TouchColorViewController: UIViewController, GameSystems {
             colorLabel.text! = "顏色"
             currentScoreLabel.text! = "\(0)"
         }
-
+        
     }
     
     @IBAction func againButton(_ sender: UIButton) {
         newhighestScore()
         gameReset()
     }
-
 }
-
-
-// 跳 alert 說 目前分數和最高分 點確定後 call again button

@@ -6,14 +6,11 @@
 //  Copyright © 2019 林柏呈. All rights reserved.
 //
 
+
+
 import UIKit
 
-class GameListTableViewCell: UITableViewCell, Delegate {
-    
-    func passData(data: String, data2: String, data3: String) {
-        gameNumberOfTimesLabel.text = data
-    }
-    
+class GameListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var gameNameLabel: UILabel!
     @IBOutlet weak var gameHighestLabel: UILabel!
@@ -21,7 +18,7 @@ class GameListTableViewCell: UITableViewCell, Delegate {
     @IBOutlet weak var gameImageView: UIImageView!
     
     func settingCell(_ gameModel: GameListDataModel) {
-        
+
         gameNameLabel.text = gameModel.gameName
         gameHighestLabel.text = gameModel.highestScore
         gameNumberOfTimesLabel.text = gameModel.numberOfTimes

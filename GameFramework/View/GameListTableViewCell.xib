@@ -92,10 +92,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="gameHighestLabel" destination="EvN-3B-497" id="9si-sw-Q6n"/>
-                <outlet property="gameImageView" destination="Wk7-2L-zVH" id="PGQ-r5-MF6"/>
-                <outlet property="gameNameLabel" destination="1ym-8C-YGT" id="uUc-sg-ioJ"/>
-                <outlet property="gameNumberOfTimesLabel" destination="0Db-zK-X3G" id="XWZ-nG-gRC"/>
+                <outlet property="gameHighestLabel" destination="EvN-3B-497" id="gIa-Lg-Yuj"/>
+                <outlet property="gameImageView" destination="Wk7-2L-zVH" id="QrU-Of-yeS"/>
+                <outlet property="gameNameLabel" destination="1ym-8C-YGT" id="Lvg-t5-GXm"/>
+                <outlet property="gameNumberOfTimesLabel" destination="0Db-zK-X3G" id="RIj-rd-wqy"/>
             </connections>
             <point key="canvasLocation" x="171.73913043478262" y="169.75446428571428"/>
         </tableViewCell>

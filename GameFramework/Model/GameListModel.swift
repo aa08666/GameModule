@@ -19,13 +19,15 @@ class GameListDataModel {
     var gameImage: String!
     
     init(gameName: String, highestScore: String, numberOfTimes: String, gameImage: String) {
-        self.gameImage = gameName
+        self.gameName = gameName
         self.highestScore = highestScore
         self.numberOfTimes = numberOfTimes
         self.gameImage = gameImage
     }
     
-    static let gameListModel: [GameListDataModel] = [GameListDataModel(gameName: "123", highestScore: "3", numberOfTimes: "3", gameImage: "icons8-game-controller-100"), GameListDataModel(gameName: "123", highestScore: "3", numberOfTimes: "3", gameImage: "icons8-epic-games-100")]
+    static var gameListModel: [GameListDataModel] = [GameListDataModel(gameName: "碰碰樂", highestScore: "0", numberOfTimes: "0", gameImage: "icons8-game-controller-100")]
+    
 }
+
 
 

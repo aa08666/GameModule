@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HRS-Jp-17P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WzW-Bl-FaF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,36 +11,35 @@
     </dependencies>
     <scenes>
         <!--Game List Table View Controller-->
-        <scene sceneID="7Ku-Dj-gdH">
+        <scene sceneID="YiF-88-VWl">
             <objects>
-                <tableViewController storyboardIdentifier="GameListTVC" id="HRS-Jp-17P" customClass="GameListTableViewController" customModule="GameFramework" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="o5k-nR-YO6">
+                <tableViewController id="WzW-Bl-FaF" customClass="GameListTableViewController" customModule="GameFramework" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DkN-we-tBN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="177" id="owB-ah-EzJ" customClass="GameListTableViewCell" customModule="GameFramework" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="177"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="229" id="HhR-0i-erA" customClass="GameListTableViewCell" customModule="GameFramework" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="229"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="owB-ah-EzJ" id="zWY-eS-63Z">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="176.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HhR-0i-erA" id="U8h-lb-iGE">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="228.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="HRS-Jp-17P" id="nva-Li-TWq"/>
-                            <outlet property="delegate" destination="HRS-Jp-17P" id="708-Jj-zRX"/>
+                            <outlet property="dataSource" destination="WzW-Bl-FaF" id="agH-Hh-50W"/>
+                            <outlet property="delegate" destination="WzW-Bl-FaF" id="8yz-Zb-2Hj"/>
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="myTableView" destination="o5k-nR-YO6" id="z3o-dd-4rN"/>
-                        <segue destination="yee-oW-OCg" kind="show" id="Ptr-3D-JDg"/>
+                        <segue destination="yee-oW-OCg" kind="show" identifier="PassToTouchSegue" id="ee9-gr-shs"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xcn-Er-frf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iQF-Wc-GEB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="648.79999999999995" y="1.3493253373313345"/>
+            <point key="canvasLocation" x="608.79999999999995" y="-3.1484257871064472"/>
         </scene>
         <!--Touch Color View Controller-->
         <scene sceneID="TWH-GZ-Zu5">

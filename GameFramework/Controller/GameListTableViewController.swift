@@ -14,57 +14,69 @@
  目標
  - 減少新增遊戲的開發成本
  */
-
-
 import UIKit
 
-class GameListTableViewController: UITableViewController, Delegate {
+class GameListTableViewController: UITableViewController{
     
-    func passData(data: String, data2: String, data3: String) {
-
-    }
-
+    // 使用 Reference 紀錄來自遊戲的最高分與次遊玩次數
+    var highestScore: Int = 0
+    var numberOftimes: Int = 0
+    
     @IBOutlet var myTableView: UITableView!
-    var gameListDataModel: GameListDataModel?
+    // 給 Model 資料
+    var gameListDataModels = GameListDataModel.gameListModel
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        // 註冊 nib 檔案
         let nib = UINib(nibName: "GameListTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "GameListCell")
-        
-        gameListDataModel = GameListDataModel.gameListModel.first
-        
     }
-
+    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return GameListDataModel.gameListModel.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let gameListDataModel = gameListDataModel else {return UITableViewCell()}
-
         let GameListCellID = "GameListCell"
-        
+        let modal = gameListDataModels[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: GameListCellID, for: indexPath) as! GameListTableViewCell
-        
-        cell.settingCell(gameListDataModel)
-        
+        // 在 Cell file 裡面 config cell
+        cell.settingCell(modal)
         
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "touchGame", sender: nil)
-//        prepare(for: <#T##UIStoryboardSegue#>, sender: <#T##Any?#>)
-        
-        if indexPath.count == 0 {
-            performSegue(withIdentifier: "touchGame", sender: nil)
+    // 判斷所點選的 Cell
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PassToTouchSegue" {
+            guard let touchColorVC = segue.destination as? TouchColorViewController else { return }
+            touchColorVC.delegate = self
+            touchColorVC.index = sender as! Int
+            print(sender as? Int)
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == 0 {
+            performSegue(withIdentifier: "PassToTouchSegue", sender: indexPath.row)
+        }
+    }
+}
+
+extension GameListTableViewController: TouchColorViewControllerDelegate {
+    
+    func passData(index: Int, highScroe: Int, gameTimes: Int) {
+        gameListDataModels[index].highestScore = "\(highScroe)"
+        gameListDataModels[index].numberOfTimes = "\(gameTimes)"
+        tableView.reloadData()
+    }
+    
 }
